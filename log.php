@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" href="img/logo.png" />
   </head>
 
-  <body style="background-color: #f3c8c8;">
+  <body style="background-color: #fdff92;">
     
   
     <div class="container mt-5 pt-5">
