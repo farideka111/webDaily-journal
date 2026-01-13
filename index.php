@@ -203,39 +203,38 @@ include "koneksi.php";
     </section>
 
     <!-- gallery begin -->
-   <!-- gallery begin -->
-    <section id="gallery" class="change text-center p-5 bg-warning-subtle change-t" >
-        <div class="container">
-            <h1 class="fw-bold display-4 pb-3">Gallery</h1>
-           <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img/curug.jpg"  class=" w-100" style="height: 400px; object-fit: contain;" alt="Belajar">
-    </div>
-    <div class="carousel-item">
-      <img src="img/mainBL.jpg "  class=" w-100" style="height: 400px; object-fit: contain;" alt="kuliah" >
-    </div>
-    <div class="carousel-item">
-      <img src="img/Nongkrong.jpg "  class="w-100" style="height: 400px; object-fit: contain;"alt="menonton bola">
-    </div>
-    <div class="carousel-item">
-      <img src="img/nugas.jpg" class="w-100" style="height: 500px; object-fit: contain;" alt="Belajar Kelompok">
-    </div>
-    <div class="carousel-item">
-      <img src="img/renang.jpg"  class=" w-100" style="height: 400px; object-fit: contain;" alt="Main Pes">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+  <!-- gallery begin -->
+     <section id="gallery" class="change text-center p-5 bg-warning-subtle">
+      <div class="container">
+        <h1 class="fw-bold display-4 pb-3">Gallery</h1>
+        <?php
+        $sql_g = "SELECT * FROM gallery ORDER BY tanggal DESC";
+        $hasil_g = $conn->query($sql_g);
+        if ($hasil_g->num_rows > 0) {
+        ?>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <?php
+            $no = 1;
+            while ($row_g = $hasil_g->fetch_assoc()) {
+                $active = ($no == 1) ? 'active' : '';
+            ?>
+                <div class="carousel-item <?= $active ?>">
+                    <img src="img/<?= $row_g['gambar'] ?>" class="w-100" style="height:400px; object-fit:contain;">
+                </div>
+            <?php $no++; } ?>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+          </button>
         </div>
+        <?php } else { echo "<p>Belum ada gallery.</p>"; } ?>
+      </div>
     </section>
+
     <!-- gallery end -->
 
     <!-- footer begin -->
