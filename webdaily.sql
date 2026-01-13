@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2025 at 09:53 AM
+-- Generation Time: Jan 13, 2026 at 02:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -50,6 +50,32 @@ INSERT INTO `article` (`id`, `judul`, `isi`, `gambar`, `tanggal`, `username`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `id` int(11) NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `gambar` varchar(100) DEFAULT NULL,
+  `tanggal` datetime DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `judul`, `gambar`, `tanggal`, `username`) VALUES
+(1, 'Main bl', '20260113074803.jpg', '2026-01-13 07:48:03', 'admin'),
+(2, 'Curug', '20260113074821.jpg', '2026-01-13 07:48:21', 'admin'),
+(3, 'Nongkrong', '20260113074857.jpg', '2026-01-13 07:48:57', 'admin'),
+(4, 'Nugas', '20260113074912.jpg', '2026-01-13 07:49:12', 'admin'),
+(5, 'Renang', '20260113074933.jpg', '2026-01-13 07:49:33', 'admin'),
+(6, 'Guhnung', '20260113074958.jpg', '2026-01-13 07:49:58', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -65,7 +91,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `foto`) VALUES
-(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '');
+(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '20260113075252.jpeg'),
+(2, 'danny', '21232f297a57a5a743894a0e4a801fc3', '20260113075318.png'),
+(4, '---', 'c4ca4238a0b923820dcc509a6f75849b', '20260113075408.png'),
+(5, '---', 'c4ca4238a0b923820dcc509a6f75849b', '20260113075424.png'),
+(6, '---.', 'c4ca4238a0b923820dcc509a6f75849b', '20260113075438.png'),
+(7, ',', 'c4ca4238a0b923820dcc509a6f75849b', '20260113075703.png');
 
 --
 -- Indexes for dumped tables
@@ -75,6 +106,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `foto`) VALUES
 -- Indexes for table `article`
 --
 ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -91,13 +128,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
